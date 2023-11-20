@@ -84,7 +84,7 @@ wp --path=/var/www/html option update permalink_structure '/%postname%/' --allow
  wp plugin install wps-hide-login --activate --allow-root --path=/var/www/html
 
 # Cambiamos la opción para ocultar la ruta gracias al plugin anterior
- wp option update whl_page "/administrador" --path=/var/www/html --allow-root
+ wp option update whl_page "administrador" --path=/var/www/html --allow-root
 
 # Activar pluggins
 # wp plugin install bbpress --activate
