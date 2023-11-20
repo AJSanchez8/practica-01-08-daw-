@@ -48,8 +48,6 @@ wp core install \
   --path=/var/www/html \
   --allow-root
 
-# Opción para cambiar las rutas y ponerlas de forma "bonita"
-# wp option update permalink_structure '/%postname%/' --allow-root --path=/var/www/html
 
 #--------------------------------------------------------------------------------------------
 #----------T E M A S ------------------------------------------------------------------------
@@ -77,12 +75,16 @@ wp plugin install wordfence --activate --allow-root --path=/var/www/html
 # Plugin para optimizar el almacenamiento en caché
 wp plugin install w3-total-cache --activate --allow-root --path=/var/www/html
 
+# Plugin Permalink Manager Lite para los enlaces permanentes.
+wp --path=/var/www/html plugin install permalink-manager --activate --allow-root
+# Configuramos el pluggin de permalink para que los enlaces sean por nombre de entrada.
+wp --path=/var/www/html option update permalink_structure '/%postname%/' --allow-root
 
 # Instalamos el plugin para ocultar la ruta de admin
-# wp plugin install wps-hide-login --activate --allow-root --path=/var/www/html
+ wp plugin install wps-hide-login --activate --allow-root --path=/var/www/html
 
 # Cambiamos la opción para ocultar la ruta gracias al plugin anterior
-# wp option update whl_page "/home" --path=/var/www/html --allow-root
+ wp option update whl_page "/administrador" --path=/var/www/html --allow-root
 
 # Activar pluggins
 # wp plugin install bbpress --activate
@@ -91,7 +93,7 @@ wp plugin install w3-total-cache --activate --allow-root --path=/var/www/html
 #----------------------------------------------------------------------
 
 # Movemos el archivo .htaccess para las rutas permanentes
-# cp -f ../htaccess/.htaccess /var/www/html
+cp -f ../htaccess/.htaccess /var/www/html
 
 # Cambiamos propietario de la carpeta
 chown -R www-data:www-data /var/www/html
